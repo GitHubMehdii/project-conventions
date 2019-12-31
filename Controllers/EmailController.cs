@@ -18,8 +18,8 @@ namespace project_conventions.Controllers
     public class EmailController : ControllerBase
     {
 
-        UserContext UserContext = new UserContext();
-        ConventionContext ConventionContext = new ConventionContext();
+        static UserContext UserContext = new UserContext();
+        static ConventionContext ConventionContext = new ConventionContext();
 
         /*
          * ------------------------------------------------------------------
@@ -27,8 +27,7 @@ namespace project_conventions.Controllers
          * ------------------------------------------------------------------
          */
 
-        [HttpGet("refuse/{idConvention}")]
-        public bool GetRefuse(int idConvention)
+        public static bool Refuse(int idConvention)
         {
             Convention convention = ConventionContext.GetOneById(idConvention);
             User user = UserContext.GetOneByApogee(convention.Apogee);
@@ -65,14 +64,13 @@ namespace project_conventions.Controllers
             }
         }
         // GET api/email/5
-        [HttpGet("accept/{idConvention}")]
-        public bool Get(int idConvention)
+        public static bool Accept(int idConvention)
         {
             Convention convention = ConventionContext.GetOneById(idConvention);
             User user = UserContext.GetOneByApogee(convention.Apogee);
             if(user!= null)
             {
-                this.GetPdf(idConvention);
+                GetPdf(idConvention);
                 string filePath = @".\assets\pdf\Convention-" + user.LastName + user.FirstName.ToUpper() + ".pdf";
                 Attachment data = new Attachment(filePath, MediaTypeNames.Application.Octet);
                 MailAddress to = new MailAddress(user.Email);
@@ -103,7 +101,7 @@ namespace project_conventions.Controllers
             }
         }
 
-        public bool GetPdf(int idConvention)
+        public static bool GetPdf(int idConvention)
         {
             Convention convention = ConventionContext.GetOneById(idConvention);
             User user = UserContext.GetOneByApogee(convention.Apogee);

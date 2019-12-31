@@ -144,6 +144,8 @@ namespace project_conventions.Controllers
             convention.Status = "accept";
 
             ConventionContext.Update(convention);
+
+            EmailController.Accept(id);
         }
 
 
@@ -170,6 +172,8 @@ namespace project_conventions.Controllers
             convention.Status = "refused";
 
             ConventionContext.Update(convention);
+
+            EmailController.Refuse(id);
         }
 
     }
