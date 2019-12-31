@@ -27,7 +27,7 @@ namespace project_conventions
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors(
-                options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials()
+                options => options.AllowAnyOrigin().AllowAnyMethod()
             );
 
             if (env.IsDevelopment())
