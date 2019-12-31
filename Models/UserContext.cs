@@ -13,7 +13,8 @@ namespace project_conventions.Models
             MySqlConnection conn = DB.GetConnection();
 
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("insert into users values(" +
+
+            string sqlCommand = "insert into users values(" +
                 user.Apogee + "," +
                 "'" + user.BirthDate + "'," +
                 "'" + user.FirstName + "'," +
@@ -23,7 +24,11 @@ namespace project_conventions.Models
                 "'" + user.Year + "'," +
                 "'" + user.About + "'" +
                 "'" + user.IsAdmin + "'" +
-            ")", conn);
+            ")";
+
+            Console.Write(sqlCommand);
+
+            MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
 
             var reader = cmd.ExecuteReader();
 

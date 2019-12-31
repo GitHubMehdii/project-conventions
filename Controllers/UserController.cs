@@ -6,7 +6,7 @@ using projectconventions.Models;
 
 namespace project_conventions.Controllers
 {
-    [EnableCors("*")]
+    [EnableCors]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -136,7 +136,5 @@ namespace project_conventions.Controllers
         {
             return UserContext.GetOneByApogeeAndBirthDate(user.Apogee, user.BirthDate);
         }
-
-
     }
 }
