@@ -23,7 +23,6 @@
             this.Apogee = Apogee;
         }
 
-
         public User(
             int Apogee,
             string BirthDate,

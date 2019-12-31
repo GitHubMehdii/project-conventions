@@ -40,7 +40,7 @@ namespace project_conventions.Models
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("select * from users", conn);
+            MySqlCommand cmd = new MySqlCommand("select * from users where isAdmin = 'no'", conn);
 
             var reader = cmd.ExecuteReader();
 
