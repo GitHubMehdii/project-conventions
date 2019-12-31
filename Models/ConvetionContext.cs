@@ -15,11 +15,12 @@ namespace project_conventions.Models
             conn.Open();
 
             string sqlCommand = "insert into conventions values(" +
-                convention.Id + "," +
                 "'" + convention.Apogee + "'," +
                 "'" + convention.StartDate + "'," +
                 "'" + convention.EndDate + "'," +
                 "'" + convention.CompanyName + "'" +
+                "'" + convention.City + "'" +
+                "'" + convention.Comments + "'" +
             ")";
 
             MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
@@ -52,7 +53,9 @@ namespace project_conventions.Models
                     Convert.ToInt32(reader["Apogee"].ToString()),
                     reader["StartDate"].ToString(),
                     reader["EndDate"].ToString(),
-                    reader["CompanyName"].ToString()
+                    reader["CompanyName"].ToString(),
+                    reader["City"].ToString(),
+                    reader["Comments"].ToString()
                 ));
             }
 
@@ -83,7 +86,9 @@ namespace project_conventions.Models
                     Convert.ToInt32(reader["Apogee"].ToString()),
                     reader["StartDate"].ToString(),
                     reader["EndDate"].ToString(),
-                    reader["CompanyName"].ToString()
+                    reader["CompanyName"].ToString(),
+                    reader["City"].ToString(),
+                    reader["Comments"].ToString()
                 );
             }
 
@@ -104,6 +109,8 @@ namespace project_conventions.Models
                 "StartDate='" + convention.StartDate + "', " +
                 "EndDate='" + convention.EndDate + "', " +
                 "CompanyName='" + convention.CompanyName + "', " +
+                "City='" + convention.City + "', " +
+                "Comments='" + convention.Comments + "', " +
                 "where Id=" + convention.Id;
 
             MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);

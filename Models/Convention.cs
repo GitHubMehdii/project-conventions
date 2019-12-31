@@ -7,6 +7,8 @@
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public string CompanyName { get; set; }
+        public string City { get; set; }
+        public string Comments { get; set; }
 
         public Convention()
         {
@@ -17,7 +19,9 @@
             int Apogee,
             string StartDate,
             string EndDate,
-            string CompanyName
+            string CompanyName,
+            string City,
+            string Comments
         )
         {
             this.Id = Id;
@@ -25,6 +29,8 @@
             this.StartDate = StartDate;
             this.EndDate = EndDate;
             this.CompanyName = CompanyName;
+            this.City = City;
+            this.Comments = Comments;
         }
     }
 }

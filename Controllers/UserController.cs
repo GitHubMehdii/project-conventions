@@ -9,11 +9,10 @@ namespace project_conventions.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors("cors_policy")]
-    public class UserController : ControllerBase
+    public class ConvetionController : ControllerBase
     {
 
         UserContext UserContext = new UserContext();
-
 
 
         /*

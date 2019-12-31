@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 31, 2019 at 05:39 AM
+-- Generation Time: Dec 31, 2019 at 08:17 AM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -17,34 +17,35 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `conventions`
 --
 
-CREATE TABLE `users` (
-  `Apogee` int(11) NOT NULL,
-  `BirthDate` varchar(30) NOT NULL,
-  `FirstName` varchar(30) NOT NULL,
-  `LastName` varchar(30) NOT NULL,
-  `Email` varchar(30) NOT NULL,
-  `Filiere` varchar(30) NOT NULL,
-  `Year` varchar(30) NOT NULL,
-  `About` varchar(250) NOT NULL,
-  `isAdmin` varchar(5) NOT NULL DEFAULT 'no' COMMENT 'yes | no'
+CREATE TABLE `conventions` (
+  `id` int(11) NOT NULL,
+  `apogee` int(11) NOT NULL,
+  `startDate` varchar(30) NOT NULL,
+  `endDate` varchar(30) NOT NULL,
+  `companyName` varchar(30) NOT NULL,
+  `city` varchar(30) NOT NULL,
+  `comments` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`Apogee`, `BirthDate`, `FirstName`, `LastName`, `Email`, `Filiere`, `Year`, `About`, `isAdmin`) VALUES
-(12345678, '1995-01-01', 'Mehdi', 'Chaoui', 'mehdi.mc60@gmail.com', 'GI', '3', 'About me', 'no');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `users`
+-- Indexes for table `conventions`
 --
-ALTER TABLE `users`
-  ADD UNIQUE KEY `apogee` (`Apogee`);
+ALTER TABLE `conventions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `conventions`
+--
+ALTER TABLE `conventions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
