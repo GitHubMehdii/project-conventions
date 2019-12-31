@@ -21,6 +21,7 @@ namespace project_conventions.Models
                 "'" + convention.CompanyName + "'" +
                 "'" + convention.City + "'" +
                 "'" + convention.Comments + "'" +
+                "'" + convention.Status + "'" +
             ")";
 
             MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
@@ -55,7 +56,8 @@ namespace project_conventions.Models
                     reader["EndDate"].ToString(),
                     reader["CompanyName"].ToString(),
                     reader["City"].ToString(),
-                    reader["Comments"].ToString()
+                    reader["Comments"].ToString(),
+                    reader["Status"].ToString()
                 ));
             }
 
@@ -88,7 +90,8 @@ namespace project_conventions.Models
                     reader["EndDate"].ToString(),
                     reader["CompanyName"].ToString(),
                     reader["City"].ToString(),
-                    reader["Comments"].ToString()
+                    reader["Comments"].ToString(),
+                    reader["Status"].ToString()
                 );
             }
 
@@ -111,6 +114,7 @@ namespace project_conventions.Models
                 "CompanyName='" + convention.CompanyName + "', " +
                 "City='" + convention.City + "', " +
                 "Comments='" + convention.Comments + "', " +
+                "Status='" + convention.Status + "', " +
                 "where Id=" + convention.Id;
 
             MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);

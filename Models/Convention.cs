@@ -9,6 +9,7 @@
         public string CompanyName { get; set; }
         public string City { get; set; }
         public string Comments { get; set; }
+        public string Status { get; set; }
 
         public Convention()
         {
@@ -21,7 +22,8 @@
             string EndDate,
             string CompanyName,
             string City,
-            string Comments
+            string Comments,
+            string Status
         )
         {
             this.Id = Id;
@@ -31,6 +33,7 @@
             this.CompanyName = CompanyName;
             this.City = City;
             this.Comments = Comments;
+            this.Status = Status;
         }
     }
 }
