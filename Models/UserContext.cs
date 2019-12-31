@@ -22,6 +22,7 @@ namespace project_conventions.Models
                 "'" + user.Filiere + "'," +
                 "'" + user.Year + "'," +
                 "'" + user.About + "'" +
+                "'" + user.IsAdmin + "'" +
             ")", conn);
 
             var reader = cmd.ExecuteReader();
@@ -53,7 +54,8 @@ namespace project_conventions.Models
                     reader["Email"].ToString(),
                     reader["Filiere"].ToString(),
                     reader["Year"].ToString(),
-                    reader["About"].ToString()
+                    reader["About"].ToString(),
+                    reader["IsAdmin"].ToString()
                 ));
             }
 
@@ -84,7 +86,8 @@ namespace project_conventions.Models
                     reader["Email"].ToString(),
                     reader["Filiere"].ToString(),
                     reader["Year"].ToString(),
-                    reader["About"].ToString()
+                    reader["About"].ToString(),
+                    reader["IsAdmin"].ToString()
                 );
             }
 
@@ -115,7 +118,8 @@ namespace project_conventions.Models
                     reader["Email"].ToString(),
                     reader["Filiere"].ToString(),
                     reader["Year"].ToString(),
-                    reader["About"].ToString()
+                    reader["About"].ToString(),
+                    reader["IsAdmin"].ToString()
                 );
             }
 
@@ -138,7 +142,8 @@ namespace project_conventions.Models
                 "Email=" + user.Email + "," +
                 "Filiere=" + user.Filiere + "," +
                 "Year=" + user.Year + "," +
-                "About=" + user.About
+                "About=" + user.About +
+                "IsAdmin=" + user.IsAdmin
             , conn);
 
             var reader = cmd.ExecuteReader();

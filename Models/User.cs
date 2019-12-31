@@ -10,6 +10,7 @@
         public string Filiere { get; set; }
         public string Year { get; set; }
         public string About { get; set; }
+        public string IsAdmin { get; set; }
 
         public User()
         {
@@ -31,7 +32,8 @@
             string Email,
             string Filiere,
             string Year,
-            string About
+            string About,
+            string IsAdmin
         )
         {
             this.Apogee = Apogee;
@@ -42,6 +44,7 @@
             this.Filiere = Filiere;
             this.Year = Year;
             this.About = About;
+            this.IsAdmin = IsAdmin;
         }
     }
 }
