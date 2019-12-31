@@ -1,7 +1,8 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "project-conventions", "project-conventions.csproj", "{541DC6A0-EB9E-4441-B6E3-2C4288D5BFA4}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "project-conventions", "project-conventions.csproj", "{541DC6A0-EB9E-4441-B6E3-2C4288D5BFA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,5 +14,11 @@ Global
 		{541DC6A0-EB9E-4441-B6E3-2C4288D5BFA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{541DC6A0-EB9E-4441-B6E3-2C4288D5BFA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{541DC6A0-EB9E-4441-B6E3-2C4288D5BFA4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C89DE77-D4B0-4116-9E56-3914EE21184F}
 	EndGlobalSection
 EndGlobal
