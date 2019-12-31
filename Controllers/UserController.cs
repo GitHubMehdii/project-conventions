@@ -123,7 +123,7 @@ namespace project_conventions.Controllers
         public ActionResult<User> Login([FromBody] User user)
         {
             // in case admin
-            if (user.IsAdmin.Equals("yes"))
+            if (user.IsAdmin == "yes")
             {
                 return UserContext.GetOneByEmailAndBirthDate(user.Email, user.BirthDate);
             }
