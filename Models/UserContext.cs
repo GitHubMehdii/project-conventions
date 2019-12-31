@@ -13,7 +13,8 @@ namespace project_conventions.Models
             MySqlConnection conn = DB.GetConnection();
 
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("insert into users values(" +
+
+            string sqlCommand = "insert into users values(" +
                 user.Apogee + "," +
                 "'" + user.BirthDate + "'," +
                 "'" + user.FirstName + "'," +
@@ -21,8 +22,11 @@ namespace project_conventions.Models
                 "'" + user.Email + "'," +
                 "'" + user.Filiere + "'," +
                 "'" + user.Year + "'," +
-                "'" + user.About + "'" +
-            ")", conn);
+                "'" + user.About + "'," +
+                "'" + user.IsAdmin + "'" +
+            ")";
+
+            MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
 
             var reader = cmd.ExecuteReader();
 
@@ -39,7 +43,9 @@ namespace project_conventions.Models
 
             conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand("select * from users", conn);
+            string sqlCommand = "select * from users where isAdmin = 'no'";
+
+            MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
 
             var reader = cmd.ExecuteReader();
 
@@ -53,7 +59,8 @@ namespace project_conventions.Models
                     reader["Email"].ToString(),
                     reader["Filiere"].ToString(),
                     reader["Year"].ToString(),
-                    reader["About"].ToString()
+                    reader["About"].ToString(),
+                    reader["IsAdmin"].ToString()
                 ));
             }
 
@@ -68,7 +75,10 @@ namespace project_conventions.Models
             MySqlConnection conn = DB.GetConnection();
 
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("select * from users where Apogee=" + apogee, conn);
+
+            string sqlCommand = "select * from users where Apogee=" + apogee;
+
+            MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
 
             var reader = cmd.ExecuteReader();
 
@@ -84,7 +94,8 @@ namespace project_conventions.Models
                     reader["Email"].ToString(),
                     reader["Filiere"].ToString(),
                     reader["Year"].ToString(),
-                    reader["About"].ToString()
+                    reader["About"].ToString(),
+                    reader["IsAdmin"].ToString()
                 );
             }
 
@@ -99,7 +110,10 @@ namespace project_conventions.Models
             MySqlConnection conn = DB.GetConnection();
 
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("select * from users where Apogee=" + Apogee + " and BirthDate='" + BirthDate + "'", conn);
+
+            string sqlCommand = "select * from users where Apogee=" + Apogee + " and BirthDate='" + BirthDate + "'";
+
+            MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
 
             var reader = cmd.ExecuteReader();
 
@@ -115,7 +129,8 @@ namespace project_conventions.Models
                     reader["Email"].ToString(),
                     reader["Filiere"].ToString(),
                     reader["Year"].ToString(),
-                    reader["About"].ToString()
+                    reader["About"].ToString(),
+                    reader["IsAdmin"].ToString()
                 );
             }
 
@@ -130,16 +145,19 @@ namespace project_conventions.Models
             MySqlConnection conn = DB.GetConnection();
 
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("update users set" +
-                "Apogee=" + user.Apogee + "," +
-                "BirthDate=" + user.BirthDate + "," +
-                "FirstName=" + user.FirstName + "," +
-                "LastName=" + user.LastName + "," +
-                "Email=" + user.Email + "," +
-                "Filiere=" + user.Filiere + "," +
-                "Year=" + user.Year + "," +
-                "About=" + user.About
-            , conn);
+
+            string sqlCommand = "update users set " +
+                "BirthDate='" + user.BirthDate + "', " +
+                "FirstName='" + user.FirstName + "', " +
+                "LastName='" + user.LastName + "', " +
+                "Email='" + user.Email + "', " +
+                "Filiere='" + user.Filiere + "', " +
+                "Year='" + user.Year + "', " +
+                "About='" + user.About + "', " +
+                "IsAdmin='" + user.IsAdmin + "' " +
+                "where Apogee=" + user.Apogee;
+
+            MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
 
             var reader = cmd.ExecuteReader();
 
@@ -154,7 +172,10 @@ namespace project_conventions.Models
             MySqlConnection conn = DB.GetConnection();
 
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("delete from users where Apogee=" + apogee, conn);
+
+            string sqlCommand = "delete from users where Apogee=" + apogee;
+
+            MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
 
             var reader = cmd.ExecuteReader();
             conn.Close();
