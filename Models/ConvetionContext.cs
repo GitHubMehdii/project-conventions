@@ -14,15 +14,17 @@ namespace project_conventions.Models
 
             conn.Open();
 
-            string sqlCommand = "insert into conventions values(" +
+            string sqlCommand = "insert into conventions(apogee, startDate, EndDate, CompanyName, City,Comments, Status) values(" +
                 "'" + convention.Apogee + "'," +
                 "'" + convention.StartDate + "'," +
                 "'" + convention.EndDate + "'," +
-                "'" + convention.CompanyName + "'" +
-                "'" + convention.City + "'" +
-                "'" + convention.Comments + "'" +
+                "'" + convention.CompanyName + "'," +
+                "'" + convention.City + "'," +
+                "'" + convention.Comments + "'," +
                 "'" + convention.Status + "'" +
             ")";
+
+            Console.WriteLine(sqlCommand);
 
             MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
 
