@@ -6,7 +6,6 @@ using projectconventions.Models;
 
 namespace project_conventions.Controllers
 {
-    [EnableCors]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
