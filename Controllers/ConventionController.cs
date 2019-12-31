@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using project_conventions.Models;
@@ -26,6 +27,7 @@ namespace project_conventions.Controllers
         [Route("add")]
         public ActionResult<Convention> Add([FromBody] Convention convention)
         {
+            convention.Status = "pending";
             return ConventionContext.Save(convention);
         }
 
@@ -47,6 +49,19 @@ namespace project_conventions.Controllers
         public ActionResult<List<Convention>> GetAll()
         {
             return ConventionContext.GetAll();
+        }
+
+        /*
+         * ------------------------------------------------------------------
+         * get all conventions of one user
+         * ------------------------------------------------------------------
+         * GET api/convention/get/all/5
+         */
+        [HttpGet]
+        [Route("get/all/{apogee}")]
+        public ActionResult<List<Convention>> GetAllOfUser(int apogee)
+        {
+            return ConventionContext.GetAllOfUser(apogee);
         }
 
         /*
@@ -102,6 +117,59 @@ namespace project_conventions.Controllers
         public void Delete(int id)
         {
             ConventionContext.DeleteOneById(id);
+        }
+
+
+
+
+
+
+
+
+
+        /*
+         * ------------------------------------------------------------------
+         * accept convention
+         * ------------------------------------------------------------------
+         * GET api/convention/accept/5
+         */
+        [HttpGet]
+        [Route("accept/{id}")]
+        public void Accept(int id)
+        {
+            Convention convention = ConventionContext.GetOneById(id);
+
+            Console.WriteLine(convention.ToString());
+
+            convention.Status = "accept";
+
+            ConventionContext.Update(convention);
+        }
+
+
+
+
+
+
+
+
+
+
+        /*
+         * ------------------------------------------------------------------
+         * refuse convention
+         * ------------------------------------------------------------------
+         * GET api/convention/accept/5
+         */
+        [HttpGet]
+        [Route("refuse/{id}")]
+        public void Refuse(int id)
+        {
+            Convention convention = ConventionContext.GetOneById(id);
+
+            convention.Status = "refused";
+
+            ConventionContext.Update(convention);
         }
 
     }

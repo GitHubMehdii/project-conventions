@@ -67,6 +67,41 @@ namespace project_conventions.Models
         }
 
 
+
+        public List<Convention> GetAllOfUser(int apogee)
+        {
+            List<Convention> list = new List<Convention>();
+
+            MySqlConnection conn = DB.GetConnection();
+
+            conn.Open();
+
+            string sqlCommand = "select * from conventions where apogee=" + apogee;
+
+            MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
+
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                list.Add(new Convention(
+                    Convert.ToInt32(reader["Id"]),
+                    Convert.ToInt32(reader["Apogee"].ToString()),
+                    reader["StartDate"].ToString(),
+                    reader["EndDate"].ToString(),
+                    reader["CompanyName"].ToString(),
+                    reader["City"].ToString(),
+                    reader["Comments"].ToString(),
+                    reader["Status"].ToString()
+                ));
+            }
+
+            conn.Close();
+
+            return list;
+        }
+
+
         public Convention GetOneById(int id)
         {
             MySqlConnection conn = DB.GetConnection();
@@ -74,6 +109,8 @@ namespace project_conventions.Models
             conn.Open();
 
             string sqlCommand = "select * from conventions where Id=" + id;
+
+            Console.WriteLine(sqlCommand);
 
             MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
 
@@ -114,7 +151,7 @@ namespace project_conventions.Models
                 "CompanyName='" + convention.CompanyName + "', " +
                 "City='" + convention.City + "', " +
                 "Comments='" + convention.Comments + "', " +
-                "Status='" + convention.Status + "', " +
+                "Status='" + convention.Status + "' " +
                 "where Id=" + convention.Id;
 
             MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);

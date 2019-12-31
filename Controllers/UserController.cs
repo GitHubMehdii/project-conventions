@@ -9,7 +9,7 @@ namespace project_conventions.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors("cors_policy")]
-    public class ConvetionController : ControllerBase
+    public class UserController : ControllerBase
     {
 
         UserContext UserContext = new UserContext();
@@ -25,6 +25,7 @@ namespace project_conventions.Controllers
         [Route("add")]
         public ActionResult<User> Add([FromBody] User user)
         {
+            user.IsAdmin = "no";
             return UserContext.Save(user);
         }
 
