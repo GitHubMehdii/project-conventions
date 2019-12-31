@@ -53,6 +53,8 @@ namespace project_conventions.Models
 
                 string sqlCommand = "select * from users where isAdmin = 'no'";
 
+                Console.WriteLine(sqlCommand);
+
                 MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
 
                 var reader = cmd.ExecuteReader();
@@ -140,6 +142,49 @@ namespace project_conventions.Models
                 conn.Open();
 
                 string sqlCommand = "select * from users where Apogee=" + Apogee + " and BirthDate='" + BirthDate + "'";
+
+                MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
+
+                var reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    user = new User(
+                        Convert.ToInt32(reader["Apogee"]),
+                        reader["BirthDate"].ToString(),
+                        reader["FirstName"].ToString(),
+                        reader["LastName"].ToString(),
+                        reader["Email"].ToString(),
+                        reader["Filiere"].ToString(),
+                        reader["Year"].ToString(),
+                        reader["About"].ToString(),
+                        reader["IsAdmin"].ToString()
+                    );
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error");
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return user;
+        }
+
+        public User GetOneByEmailAndBirthDate(string Email, string BirthDate)
+        {
+            MySqlConnection conn = DB.GetConnection();
+
+            User user = null;
+
+            try
+            {
+                conn.Open();
+
+                string sqlCommand = "select * from users where email='" + Email + "' and BirthDate='" + BirthDate + "' and IsAdmin='yes'";
 
                 MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
 
