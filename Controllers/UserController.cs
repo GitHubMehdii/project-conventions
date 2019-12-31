@@ -8,7 +8,7 @@ namespace project_conventions.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [EnableCors]
+    [EnableCors("MyPolicy")]
     public class UserController : ControllerBase
     {
 
