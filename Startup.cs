@@ -28,7 +28,7 @@ namespace project_conventions
         {
             // Make sure you call this before calling app.UseMvc()
             app.UseCors(
-                options => options.AllowAnyOrigin().AllowAnyMethod()
+                options => options.WithOrigins("*").AllowAnyOrigin().AllowAnyMethod()
             );
 
             if (env.IsDevelopment())
