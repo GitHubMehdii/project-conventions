@@ -139,8 +139,6 @@ namespace project_conventions.Controllers
         {
             Convention convention = ConventionContext.GetOneById(id);
 
-            Console.WriteLine(convention.ToString());
-
             convention.Status = "accept";
 
             ConventionContext.Update(convention);

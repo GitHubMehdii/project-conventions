@@ -30,11 +30,12 @@ namespace project_conventions.Controllers
         public static bool Refuse(int idConvention)
         {
             Convention convention = ConventionContext.GetOneById(idConvention);
+            Console.WriteLine("convention.Apogee" + convention.Apogee);
             User user = UserContext.GetOneByApogee(convention.Apogee);
             if (user != null)
             {
                 //this.GetPdf(idConvention);
-                //string filePath = @".\assets\pdf\Convention-" + user.LastName + user.FirstName.ToUpper() + ".pdf";
+                //string filePath = @".\assets/pdf/Convention-" + user.LastName + user.FirstName.ToUpper() + ".pdf";
                // Attachment data = new Attachment(filePath, MediaTypeNames.Application.Octet);
                 MailAddress to = new MailAddress(user.Email);
                 MailAddress from = new MailAddress("projectconvention84@gmail.com");
@@ -71,7 +72,7 @@ namespace project_conventions.Controllers
             if(user!= null)
             {
                 GetPdf(idConvention);
-                string filePath = @".\assets\pdf\Convention-" + user.LastName + user.FirstName.ToUpper() + ".pdf";
+                string filePath = @"assets/pdf/Convention-" + user.LastName + user.FirstName.ToUpper() + ".pdf";
                 Attachment data = new Attachment(filePath, MediaTypeNames.Application.Octet);
                 MailAddress to = new MailAddress(user.Email);
                 MailAddress from = new MailAddress("projectconvention84@gmail.com");
@@ -119,8 +120,8 @@ namespace project_conventions.Controllers
                 // Open the document to enable you to write to the document  
                 document.Open();
                 PdfContentByte cb = writer.DirectContent;
-                iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(@".\assets\img\ensa.png");
-                iTextSharp.text.Image img2 = iTextSharp.text.Image.GetInstance(@".\assets\img\Signature Benkadour.png");
+                iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(@"assets/img/ensa.png");
+                iTextSharp.text.Image img2 = iTextSharp.text.Image.GetInstance(@"assets/img/Signature Benkadour.png");
                 img.SetAbsolutePosition(60, 727);
                 img.ScalePercent(50);
                 cb.AddImage(img);
@@ -137,9 +138,9 @@ namespace project_conventions.Controllers
                 cb.Stroke();
 
                 cb.BeginText();
-                BaseFont f_cn = BaseFont.CreateFont(@".\assets\fonts\Lato-Black.ttf", BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                BaseFont f_bo = BaseFont.CreateFont(@".\assets\fonts\Lato-Bold.ttf", BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                BaseFont f_li = BaseFont.CreateFont(@".\assets\fonts\Lato-Heavy.ttf", BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+                BaseFont f_cn = BaseFont.CreateFont(@"assets/fonts/Lato-Black.ttf", BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+                BaseFont f_bo = BaseFont.CreateFont(@"assets/fonts/Lato-Bold.ttf", BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+                BaseFont f_li = BaseFont.CreateFont(@"assets/fonts/Lato-Heavy.ttf", BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
 
                 cb.SetFontAndSize(f_bo, 20);
                 cb.ShowTextAligned(PdfContentByte.ALIGN_CENTER, "CONVENTION CADRE", 300, 656, 0);
