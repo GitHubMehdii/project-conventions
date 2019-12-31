@@ -157,8 +157,6 @@ namespace project_conventions.Models
                 "IsAdmin='" + user.IsAdmin + "' " +
                 "where Apogee=" + user.Apogee;
 
-            Console.WriteLine(sqlCommand);
-
             MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
 
             var reader = cmd.ExecuteReader();
