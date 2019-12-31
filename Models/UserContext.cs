@@ -45,6 +45,8 @@ namespace project_conventions.Models
 
             conn.Open();
 
+            string sqlCommand = "select * from users where isAdmin = 'no'";
+
             MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
 
             var reader = cmd.ExecuteReader();
