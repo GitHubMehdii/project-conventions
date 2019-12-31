@@ -1,26 +1,16 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using project_conventions.Models;
 using projectconventions.Models;
 
-namespace projectconventions.Controllers
+namespace project_conventions.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
-        // GET api/auth
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
-        {
-            return new string[] { "auth1", "auth1" };
-        }
 
-        // GET api/auth/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value " + id;
-        }
+        UserContext UserContext = new UserContext();
 
         /*
          * ------------------------------------------------------------------
@@ -30,11 +20,32 @@ namespace projectconventions.Controllers
 
         // POST api/auth
         [HttpPost]
-        public ActionResult<User> Post([FromBody] User user)
+        public ActionResult<User> Post([FromBody] int apogee, string birthDate) 
         {
-
-            return new User(0, user.Username, user.Password);
+            return UserContext.GetOneByApogeeAndBirthDate(apogee, birthDate);
         }
+
+
+
+
+
+
+
+
+        // GET api/auth
+        [HttpGet]
+        public ActionResult<User> Get()
+        {
+            return new User();
+        }
+
+        // GET api/auth/5
+        [HttpGet("{id}")]
+        public ActionResult<string> Get(int id)
+        {
+            return "value " + id;
+        }
+
 
         // PUT api/auth/5
         [HttpPut("{id}")]
