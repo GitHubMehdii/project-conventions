@@ -26,8 +26,6 @@ namespace project_conventions.Models
                 "'" + user.IsAdmin + "'" +
             ")";
 
-            Console.Write(sqlCommand);
-
             MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
 
             var reader = cmd.ExecuteReader();
@@ -148,16 +146,18 @@ namespace project_conventions.Models
 
             conn.Open();
 
-            string sqlCommand = "update users set" +
-                "Apogee=" + user.Apogee + "," +
-                "BirthDate=" + user.BirthDate + "," +
-                "FirstName=" + user.FirstName + "," +
-                "LastName=" + user.LastName + "," +
-                "Email=" + user.Email + "," +
-                "Filiere=" + user.Filiere + "," +
-                "Year=" + user.Year + "," +
-                "About=" + user.About + "," +
-                "IsAdmin=" + user.IsAdmin;
+            string sqlCommand = "update users set " +
+                "BirthDate='" + user.BirthDate + "', " +
+                "FirstName='" + user.FirstName + "', " +
+                "LastName='" + user.LastName + "', " +
+                "Email='" + user.Email + "', " +
+                "Filiere='" + user.Filiere + "', " +
+                "Year='" + user.Year + "', " +
+                "About='" + user.About + "', " +
+                "IsAdmin='" + user.IsAdmin + "' " +
+                "where Apogee=" + user.Apogee;
+
+            Console.WriteLine(sqlCommand);
 
             MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
 
