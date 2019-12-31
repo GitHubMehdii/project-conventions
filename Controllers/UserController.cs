@@ -36,6 +36,7 @@ namespace project_conventions.Controllers
 
 
 
+
         /*
          * ------------------------------------------------------------------
          * get all users
@@ -121,7 +122,14 @@ namespace project_conventions.Controllers
         [Route("login")]
         public ActionResult<User> Login([FromBody] User user)
         {
+            // in case admin
+            if (user.IsAdmin == "yes")
+            {
+                return UserContext.GetOneByEmailAndBirthDate(user.Email, user.BirthDate);
+            }
+            
             return UserContext.GetOneByApogeeAndBirthDate(user.Apogee, user.BirthDate);
+
         }
 
         /*
