@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 31, 2019 at 08:17 AM
+-- Generation Time: Dec 31, 2019 at 08:21 AM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -27,7 +27,8 @@ CREATE TABLE `conventions` (
   `endDate` varchar(30) NOT NULL,
   `companyName` varchar(30) NOT NULL,
   `city` varchar(30) NOT NULL,
-  `comments` varchar(250) NOT NULL
+  `comments` varchar(250) NOT NULL,
+  `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
